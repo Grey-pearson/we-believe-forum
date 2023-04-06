@@ -4,7 +4,8 @@
   "description": "a forum for a loving community of weirdos",
   "main": "index.js",
   "scripts": {
-    "test": "npm start"
+    "test": "npm start",
+    "start": "node server/index.js"
   },
   "repository": {
     "type": "git",
