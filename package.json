@@ -1,0 +1,19 @@
+{
+  "name": "we-b",
+  "version": "1.0.0",
+  "description": "a forum for a loving community of weirdos",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Grey-pearson/we-believe-forum.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Grey-pearson/we-believe-forum/issues"
+  },
+  "homepage": "https://github.com/Grey-pearson/we-believe-forum#readme"
+}
