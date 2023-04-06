@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm start",
-    "start": "node server/index.js",
+    "start": "node server/server.js",
     "build": "cd client && npm run build"
   },
   "repository": {
@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Grey-pearson/we-believe-forum/issues"
   },
-  "homepage": "https://github.com/Grey-pearson/we-believe-forum#readme"
+  "homepage": "https://github.com/Grey-pearson/we-believe-forum#readme",
+  "dependencies": {
+    "mongodb": "^5.2.0"
+  }
 }
