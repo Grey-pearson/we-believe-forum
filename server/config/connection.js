@@ -4,9 +4,9 @@
 
 // module.exports = MongoClient;
 
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/we-b", {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/we-b', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

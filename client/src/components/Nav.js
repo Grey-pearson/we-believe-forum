@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Nav() {
-    return (
-        <nav>
+  return (
+    <nav>
       <ul>
         <li>
           <Link to="/">Posts</Link>
@@ -19,7 +19,7 @@ function Nav() {
         </li>
       </ul>
     </nav>
-    );
+  );
 }
 
 export default Nav;
