@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Grey-pearson/we-believe-forum#readme",
   "dependencies": {
-    "mongodb": "^5.2.0"
+    "mongodb": "^5.2.0",
+    "react-router-dom": "^6.10.0"
   }
 }
