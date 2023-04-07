@@ -1,30 +1,39 @@
-const express = require("express");
+const express = require('express');
+const { ApolloServer } = require('apollo-server-express');
+const path = require('path');
+
+const { typeDefs, resolvers } = require('./schemas');
+const db = require('./config/connection');
+
+const PORT = process.env.PORT || 3001;
 const app = express();
-const cors = require("cors");
-const path = require("path");
-// require("dotenv").config({ path: "./config.env" });
-const port = process.env.PORT || 5000;
-app.use(cors());
-app.use(express.json());
-// app.use(require("./routes/record"));
-// get driver connection
-// const dbo = require("./db/conn");
-
-app.listen(port, () => {
-    // perform a database connection when server starts
-    dbo.connectToServer(function (err) {
-        if (err) console.error(err);
-
-    });
-    console.log(`Server is running on port: ${port}`);
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
 });
-// set up appolo server
-// mern server p21 startappoloserver function
-// import at
 
-// needs schema or will break
-// query hello world schema, just basic connection
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-/////////////////////////////////////////////
-// basic resolver and typedefs
-// week project 21 mini project
+if (process.env.NODE_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../client/build')));
+}
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
+
+const startApolloServer = async (typeDefs, resolvers) => {
+    await server.start();
+    server.applyMiddleware({ app });
+
+    db.once('open', () => {
+        app.listen(PORT, () => {
+            console.log(`API server running on port ${PORT}!`);
+            console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
+        })
+    })
+};
+
+startApolloServer(typeDefs, resolvers);
+
