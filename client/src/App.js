@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './components/Nav';
+//import PostList from './components/PostList.js';
 import Post from './components/Post';
 import Login from './components/Login';
 import Signup from './components/Signup';
@@ -14,10 +15,11 @@ function App() {
     <Router>
       <Nav />
       <Switch>
-        <Route exact path='/' component={Post} />
-        <Route exact path='/Login' component={Login} />
-        <Route exact path='/Signup' component={Signup} />
-        <Route exact path='/User' component={User} />
+        <Route exact path="/PostList" component={PostList} />
+        <Route exact path="/Post/" component={Post} />
+        <Route exact path="/Login" component={Login} />
+        <Route exact path="/Signup" component={Signup} />
+        <Route exact path="/User" component={User} />
       </Switch>
     </Router>
     </React.Fragment>
