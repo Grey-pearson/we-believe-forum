@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import NavBar from "../components/Nav";
-import Footer from "../components/Footer";
+import React, { useState } from 'react';
+import NavBar from '../components/Nav';
+import Footer from '../components/Footer';
 
 export default function PortfolioContainer() {
-  const [currentPage, setCurrentPage] = useState("AboutMe");
+  const [currentPage, setCurrentPage] = useState('AboutMe');
   const renderPage = () => {
-    if (currentPage === "AboutMe") {
+    if (currentPage === 'AboutMe') {
       return <AboutMe />;
     }
-    if (currentPage === "Portfolio") {
+    if (currentPage === 'Portfolio') {
       return <Portfolio />;
     }
-    if (currentPage === "Contact") {
+    if (currentPage === 'Contact') {
       return <Contact />;
     }
     return <Resume />;

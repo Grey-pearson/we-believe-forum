@@ -1,11 +1,11 @@
-import React from "react";
-import Nav from "./components/Nav";
+import React from 'react';
+import Nav from './components/Nav';
 //import PostList from './components/PostList.js';
-import Post from "./components/Post";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import User from "./components/User";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Post from './components/Post';
+import Login from './components/Login';
+import Signup from './components/Signup';
+import User from './components/User';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   return (
