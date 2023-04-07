@@ -4,10 +4,13 @@ import Post from './components/Post';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import User from './components/User';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import CssBaseline from '@mui/material/CssBaseline';
 
 function App() {
   return (
+    <React.Fragment>
+      <CssBaseline />
     <Router>
       <Nav />
       <Switch>
@@ -17,6 +20,7 @@ function App() {
         <Route exact path='/User' component={User} />
       </Switch>
     </Router>
+    </React.Fragment>
   );
 }
 
