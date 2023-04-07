@@ -12,10 +12,10 @@ const resolvers = {
     },
     posts: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return post.find(params).sort({ createdAt: -1 });
+      return Post.find(params).sort({ createdAt: -1 });
     },
-    thought: async (parent, { postId }) => {
-      return post.findOne({ _id: postId });
+    post: async (parent, { postId }) => {
+      return Post.findOne({ _id: postId });
     },
   },
 
@@ -52,28 +52,11 @@ const resolvers = {
 
       return post;
     },
-    // addComment: async (parent, { thoughtId, commentText, commentAuthor }) => {
-    //   return Thought.findOneAndUpdate(
-    //     { _id: thoughtId },
-    //     {
-    //       $addToSet: { comments: { commentText, commentAuthor } },
-    //     },
-    //     {
-    //       new: true,
-    //       runValidators: true,
-    //     }
-    //   );
-    // },
+    
     removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
     },
-    // removeComment: async (parent, { thoughtId, commentId }) => {
-    //   return Thought.findOneAndUpdate(
-    //     { _id: thoughtId },
-    //     { $pull: { comments: { _id: commentId } } },
-    //     { new: true }
-    //   );
-    // },
+    
   },
 };
 

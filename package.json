@@ -2,7 +2,7 @@
   "name": "we-b",
   "version": "1.0.0",
   "description": "a forum for a loving community of weirdos",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
