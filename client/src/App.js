@@ -13,12 +13,12 @@ function App() {
       <CssBaseline />
     <Router>
       <Nav />
-      <Switch>
+      <Routes>
         <Route exact path="/Post/" component={Post} />
         <Route exact path="/Login" component={Login} />
         <Route exact path="/Signup" component={Signup} />
         <Route exact path="/User" component={User} />
-      </Switch>
+      </Routes>
     </Router>
     </React.Fragment>
   );
