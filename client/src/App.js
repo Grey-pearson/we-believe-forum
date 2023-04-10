@@ -4,24 +4,26 @@ import Post from './components/Post';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import User from './components/User';
-import { Router, Switch, Route } from 'react-router-dom';
-import CssBaseline from '@mui/material/CssBaseline';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// import { ThemeProvider, CssBaseline } from '@mui/material';
+// import ScopedCssBaseline from '@mui/material/ScopedCssBaseline';
 
-function App() {
-  return (
-    <React.Fragment>
-      <CssBaseline />
-    <Router>
-      <Nav />
-      <Switch>
-        <Route exact path="/Post/" component={Post} />
-        <Route exact path="/Login" component={Login} />
-        <Route exact path="/Signup" component={Signup} />
-        <Route exact path="/User" component={User} />
-      </Switch>
-    </Router>
-    </React.Fragment>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      < Router >
+        <div>
+          <Nav />
+          <Routes >
+            <Route exact path="/" component={Post} />
+            <Route path="/Login" component={Login} />
+            <Route path="/Signup" component={Signup} />
+            <Route path="/User" component={User} />
+          </Routes>
+        </div>
+      </Router >
+    );
+  }
 }
 
 export default App;
