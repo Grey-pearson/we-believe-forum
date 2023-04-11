@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from './Nav';
+import { Button, Typography } from '@mui/material';
 
 function Header(props) {
   const { currentTab, handleTabChange } = props;
@@ -8,9 +9,6 @@ function Header(props) {
     <div className="center">
       <section>
         <header className="header-container">
-          <div>
-            <h1 className="title">The We Believe Blog</h1>
-          </div>
           <div className="navbar">
             <Nav
               currentTab={currentTab}
