@@ -1,23 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function Nav() {
+function Nav(props) {
+  const { currentTab, setCurrentTab } = props;
+
   return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">Posts</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-        <li>
-          <Link to="/signup">Signup</Link>
-        </li>
-        <li>
-          <Link to="/user/:id">User</Link>
-        </li>
-      </ul>
+    <nav className="nav-container">
+      {
+        <ul>
+          <li>
+            <Link to="/Post">POST</Link>
+          </li>
+          <li>
+            <Link to="/Login">LOGIN</Link>
+          </li>
+          <li>
+            <Link to="/Signup">SIGN UP</Link>
+          </li>
+          <li>
+            <Link to="/User">User</Link>
+          </li>
+        </ul>
+      }
     </nav>
   );
 }
