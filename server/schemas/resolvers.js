@@ -10,8 +10,8 @@ const resolvers = {
     user: async (parent, { username }) => {
       return User.findOne({ username }).populate('posts');
     },
-    posts: async (parent, { username }) => {
-      const params = username ? { username } : {};
+    posts: async (parent, { postText }) => {
+      const params = postText ? { postText } : {};
       return Post.find(params).sort({ createdAt: -1 });
     },
     post: async (parent, { postId }) => {
