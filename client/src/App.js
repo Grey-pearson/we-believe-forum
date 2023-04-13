@@ -27,9 +27,9 @@ function App() {
         <div>
           <main>
             <Routes>
-              <Route path="./pages/Home" element={Home} />
-              <Route path="./pages/Profile" element={Profile} />
-              <Route path="/User" element={User} />
+              <Route path="/Home" element={<Home />} />
+              <Route path="/Profile" element={<Profile />} />
+              <Route path="/User" element={<User />} />
             </Routes>
           </main>
         </div>
