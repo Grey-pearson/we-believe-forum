@@ -32,14 +32,23 @@ function Nav(props) {
           </li>
           <li>
             <Button variant="outlined" color="primary">
-              <NavLink to="/Profile" activeClassName="active-link">
+              <Link to="/Profile" activeClassName="active-link">
                 PROFILE
-              </NavLink>
+              </Link>
             </Button>
           </li>
           <li>
             <Button variant="outlined" color="primary">
-              CREATE POST
+              <Link to="/CreatePost" activeClassName="active-link">
+                CREATE POST
+              </Link>
+            </Button>
+          </li>
+          <li>
+            <Button variant="outlined" color="primary">
+              <Link to="/Login" activeClassName="active-link">
+                LOG IN
+              </Link>
             </Button>
           </li>
           <li>
