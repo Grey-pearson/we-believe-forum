@@ -1,20 +1,16 @@
 import React from 'react';
+import { Card, CardHeader, CardContent, Typography } from '@mui/material';
 
-function Post() {
+function Post(props) {
+  const { title, user, date, text, comments, likes, idk } = props
+
   return (
-    <div className="post-list">
-      <h1>Posts</h1>
-      <ul>
-        <li>
-          <a href="/post/1">Post 1</a>
-          <p>Description of Post 1</p>
-        </li>
-        <li>
-          <a href="/post/2">Post 2</a>
-          <p>Description of Post 2</p>
-        </li>
-      </ul>
-    </div>
+    <React.forwardRef>
+      <div variant="outlined" className="post">
+        {/* postText, postAuthor, createdAt, comments */}
+
+      </div>
+    </React.forwardRef>
   );
 }
 
