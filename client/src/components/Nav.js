@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom';
 import { Box, Button, Stack, Typography } from '@mui/material';
 import { styled } from '@mui/system';
 
-
 function Nav(props) {
   const { currentTab, setCurrentTab } = props;
 
@@ -26,9 +25,9 @@ function Nav(props) {
         >
           <li>
             <Button variant="outlined" color="primary">
-              <NavLink to="/Home" activeClassName="active-link">
+              <Link to="/Home" activeClassName="active-link">
                 HOME
-              </NavLink>
+              </Link>
             </Button>
           </li>
           <li>
