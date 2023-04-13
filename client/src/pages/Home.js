@@ -9,7 +9,6 @@ export default function Home() {
       {/* props for nav?? */}
       <PostList />
       {/* <Footer /> */}
-      <h1>Home Page</h1>
     </>
   );
 }
