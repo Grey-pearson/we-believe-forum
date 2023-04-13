@@ -11,4 +11,4 @@ module.exports = MongoClient;
 //   useUnifiedTopology: true,
 // });
 
-module.exports = mongoose.connection;
+module.exports = MongoClient.connection;
