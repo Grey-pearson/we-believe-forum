@@ -5,9 +5,8 @@ import Post from './Post';
 function PostList() {
   return (
     <div className="postList">
-      <h2>Our Products:</h2>
       {/* refactor */}
-      {state.products.length ? (
+      {/* {state.products.length ? (
         <div className="flex-row">
           {filterProducts().map((post) => (
             <Post
@@ -24,7 +23,16 @@ function PostList() {
       ) : (
         <h3>You haven't added any products yet!</h3>
       )}
-      {loading ? <img src={spinner} alt="loading" /> : null}
+      {loading ? <img src={spinner} alt="loading" /> : null} */}
+
+      <Post
+        // postText, postAuthor, createdAt, comments
+        postText={"This is a post"}
+        postAuthor={"david"}
+        createdAt={"2020-01-01"}
+        comments={[]}
+      />
+
     </div>
   );
 }
