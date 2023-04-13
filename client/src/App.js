@@ -7,7 +7,6 @@ import Header from './components/Header';
 import Profile from './pages/Profile';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Signout from './pages/Signout';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -30,8 +29,6 @@ function App() {
             <Routes>
               <Route path="./pages/Home" element={Home} />
               <Route path="./pages/Profile" element={Profile} />
-              <Route path="./pages/Signout" element={Signout} />
-
               <Route path="/User" element={User} />
             </Routes>
           </main>
