@@ -25,6 +25,7 @@ function PostList(postData) {
         backgroundColor: 'primary.main',
         opacity: [0.9, 0.8, 0.7],
       },
+      margin: 'auto',
     }}>
       {/* postText, postAuthor, createdAt, comments */}
       <CardContent>
