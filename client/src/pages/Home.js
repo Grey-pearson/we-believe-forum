@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import PostList from '../components/Postlist';
+import PostForm from '../components/PostForm';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
 
@@ -11,7 +12,8 @@ export default function Home() {
 
   return (
     <div>
-      {/* props for nav?? */}
+      {/* post form */}
+      <PostForm />
       <div >
         {loading ? (
           <div>Loading...</div>
