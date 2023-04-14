@@ -15,7 +15,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  env.MONGODB_URI || 'mongodb://0.0.0.0:27017/we-b',
+  env.MONGODB_URI || 'mongodb://0.0.0.0/we-b',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
