@@ -26,7 +26,7 @@ function Nav(props) {
           <li>
             <Button variant="outlined" color="primary">
               <Link to="/Home" activeClassName="active-link">
-                HOME
+                TEST
               </Link>
             </Button>
           </li>
