@@ -4,11 +4,14 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS } from '../utils/queries';
 
-import { Card, CardHeader, CardContent, Typography, Box } from '@mui/material';
+import { Card, TextField, Button } from '@mui/material';
+import { useTheme, colors, CardActions } from '@mui/material';
 
 import AuthService from '../utils/auth';
 
 const PostForm = () => {
+    const theme = useTheme();
+
     const [postText, setPostText] = useState('');
 
     const [characterCount, setCharacterCount] = useState(0);
@@ -58,47 +61,54 @@ const PostForm = () => {
         <Card variant="outlined" sx={{
             width: 300,
             minHeight: 100,
-            backgroundColor: 'primary.dark',
             '&:hover': {
-                backgroundColor: 'primary.main',
                 opacity: [0.9, 0.8, 0.7],
             },
             margin: 'auto',
             padding: '1rem',
             borderRadius: '10px',
-        }}>
+            bgcolor: 'primary.main'
+
+        }}
+        >
             <h3>Create your master peice of a theory here</h3>
 
 
             <>
-                <p
-                    className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
-                        }`}
-                >
-                    Character Count: {characterCount}/280
-                </p>
+
                 <form
-                    className="flex-row justify-center justify-space-between-md align-center"
                     onSubmit={handleFormSubmit}
                 >
                     <div>
-                        <textarea
-                            name="thoughtText"
-                            placeholder="Here's a new thought..."
-                            value={postText}
-                            className="form-input w-100"
-
-                            onChange={handleChange}
-                        ></textarea>
+                        <TextField
+                            variant="outlined"
+                            fullWidth
+                            id="outlined-multiline-static"
+                            multiline
+                            rows={4}
+                            focused
+                            defaultValue={'text here'}
+                            sx={{
+                                backgroundColor: 'primary.light',
+                                borderRadius: '10px',
+                                // border: '1px solid',
+                            }}
+                        />
                     </div>
 
-                    <div className="col-12 col-lg-3">
-                        <button className="btn btn-primary btn-block py-3" type="submit">
+                    <CardActions disableSpacing>
+                        <Button variant="outlined" type="submit" sx={{ bgcolor: 'primary.dark', m: 2, }}>
                             Add Thought
-                        </button>
-                    </div>
+                        </Button>
+                        <p
+                            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
+                                }`}
+                        >
+                            {characterCount}/280
+                        </p>
+                    </CardActions>
                     {error && (
-                        <div className="col-12 my-3 bg-danger text-white p-3">
+                        <div>
                             {error.message}
                         </div>
                     )}
