@@ -5,6 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
+import { createTheme, ThemeProvider, colors } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: colors.indigo[400],
+      light: colors.indigo[300],
+      dark: colors.indigo[800],
+    }
+
+  }
+});
+
+
 const client = new ApolloClient({
   uri: 'YOUR_GRAPHQL_ENDPOINT',
   cache: new InMemoryCache()
@@ -14,7 +28,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ApolloProvider client={client}>
     {/*  <React.StrictMode> */}
-    <App />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
     {/* </React.StrictMode> */}
   </ApolloProvider>
 );
