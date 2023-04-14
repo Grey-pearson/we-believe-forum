@@ -43,11 +43,11 @@ function Post(props) {
       </CardContent>
 
       {/* the issue probably */}
-      <CardActions disableSpacing>
+      {/* <CardActions disableSpacing>
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-      </CardActions>
+      </CardActions> */}
 
     </Card>
   );

@@ -5,10 +5,10 @@ import PostList from '../components/Postlist';
 
 export default function Home() {
   return (
-    <>
+    <div>
       {/* props for nav?? */}
       <PostList />
       {/* <Footer /> */}
-    </>
+    </div>
   );
 }
