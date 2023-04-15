@@ -30,13 +30,13 @@ function PostList(postData) {
       {/* postText, postAuthor, createdAt, comments */}
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" paragraph>
-          {postData.postText}
+          {postData.postText}lorem ipsom sit amet, consectetur adipiscing elit in id
         </Typography>
         <Typography variant="h5" component="div" paragraph>
-          {postData.postAuthor}
+          {postData.postAuthor}david attunbutofh
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary" paragraph>
-          {postData.createdAt}
+          {postData.createdAt} 69/68.79
         </Typography>
         <Typography variant="body2">
           {postData.comments}

@@ -13,6 +13,12 @@ const theme = createTheme({
       main: colors.indigo[400],
       light: colors.indigo[300],
       dark: colors.indigo[800],
+    },
+    secondary: {
+      main: colors.teal[500],
+    },
+    highlight: {
+      main: colors.yellow[500]
     }
 
   }

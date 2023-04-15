@@ -65,7 +65,7 @@ const PostForm = () => {
                 opacity: [0.9, 0.8, 0.7],
             },
             margin: 'auto',
-            padding: '1rem',
+            padding: '0 1rem',
             borderRadius: '10px',
             bgcolor: 'primary.main'
 
@@ -97,7 +97,7 @@ const PostForm = () => {
                     </div>
 
                     <CardActions disableSpacing>
-                        <Button variant="outlined" type="submit" sx={{ bgcolor: 'primary.dark', m: 2, }}>
+                        <Button variant="outlined" type="submit" sx={{ bgcolor: 'secondary.main', color: 'black', m: 2, }}>
                             Add Thought
                         </Button>
                         <p
