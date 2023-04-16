@@ -48,13 +48,6 @@ function Nav(props) {
             </li>
             <li>
               <Button variant="outlined" color="primary">
-                <Link to="/CreatePost" activeClassName="active-link">
-                  CREATE POST
-                </Link>
-              </Button>
-            </li>
-            <li>
-              <Button variant="outlined" color="primary">
                 <Link to="/Login" activeClassName="active-link">
                   LOG IN
                 </Link>
