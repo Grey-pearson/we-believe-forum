@@ -8,7 +8,6 @@ import {
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  from,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createTheme, ThemeProvider, colors } from '@mui/material';
