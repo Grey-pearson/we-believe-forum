@@ -1,70 +1,163 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './Login.module.css';
+import { gql, useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { AUTH_TOKEN } from '../constants';
 
-function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [email, setEmail] = useState('');
+const Login = () => {
+  const navigate = useNavigate();
+  const [formState, setFormState] = useState({
+    login: true,
+    email: '',
+    password: '',
+    name: '',
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // handle login logic
-  };
+  const SIGNUP_MUTATION = gql`
+    mutation SignupMutation(
+      $email: String!
+      $password: String!
+      $name: String!
+    ) {
+      signup(email: $email, password: $password, name: $name) {
+        token
+      }
+    }
+  `;
+
+  const LOGIN_MUTATION = gql`
+    mutation LoginMutation($email: String!, $password: String!) {
+      login(email: $email, password: $password) {
+        token
+      }
+    }
+  `;
+
+  const [login] = useMutation(LOGIN_MUTATION, {
+    variables: {
+      email: formState.email,
+      password: formState.password,
+    },
+    onCompleted: ({ login }) => {
+      localStorage.setItem(AUTH_TOKEN, login.token);
+      navigate('/');
+    },
+  });
+
+  const [signup] = useMutation(SIGNUP_MUTATION, {
+    variables: {
+      name: formState.name,
+      email: formState.email,
+      password: formState.password,
+    },
+    onCompleted: ({ signup }) => {
+      localStorage.setItem(AUTH_TOKEN, signup.token);
+      navigate('/');
+    },
+  });
 
   return (
-    <div className={styles.container}>
-      <h1>Login</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label className={styles.label}>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <button type="submit">Login</button>
-      </form>
-      <br />
-      <br />
-      <h1>Register</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          Username:
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </label>
-        <label className={styles.label}>
-          Password:
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </label>
-        <label>
-          E-mail:
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </label>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <Container maxWidth="sm">
+      <Box textAlign="center" py={3}>
+        <Typography variant="h4" color="primary">
+          {formState.login ? 'Login' : 'Sign Up'}
+        </Typography>
+        <br />
+        <Grid container direction="column" alignItems="center" spacing={2}>
+          {!formState.login && (
+            <Grid item>
+              <TextField
+                value={formState.name}
+                onChange={(e) =>
+                  setFormState({
+                    ...formState,
+                    name: e.target.value,
+                  })
+                }
+                type="text"
+                placeholder="Your name"
+                inputProps={{
+                  style: { color: 'white' },
+                }}
+                InputProps={{
+                  style: { color: 'gray' },
+                }}
+              />
+            </Grid>
+          )}
+          <Grid item>
+            <TextField
+              value={formState.email}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  email: e.target.value,
+                })
+              }
+              type="text"
+              placeholder="Type email address"
+              inputProps={{
+                style: { color: 'white' },
+              }}
+              InputProps={{
+                style: { color: 'gray' },
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              value={formState.password}
+              onChange={(e) =>
+                setFormState({
+                  ...formState,
+                  password: e.target.value,
+                })
+              }
+              type="password"
+              placeholder="Choose a password"
+              inputProps={{
+                style: { color: 'white' },
+              }}
+              InputProps={{
+                style: { color: 'gray' },
+              }}
+            />
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={formState.login ? login : signup}
+            >
+              {formState.login ? 'login' : 'create account'}
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              color="secondary"
+              onClick={(e) =>
+                setFormState({
+                  ...formState,
+                  login: !formState.login,
+                })
+              }
+            >
+              {formState.login
+                ? 'need to create an account?'
+                : 'already have an account?'}
+            </Button>
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
   );
-}
+};
 
 export default Login;

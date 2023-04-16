@@ -3,9 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  HttpLink,
+  from,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 import { createTheme, ThemeProvider, colors } from '@mui/material';
+import { AUTH_TOKEN } from './constants';
 
 const theme = createTheme({
   palette: {
@@ -25,10 +32,21 @@ const theme = createTheme({
   }
 });
 
+const httpLink = new HttpLink({ uri: 'YOUR_GRAPHQL_ENDPOINT' });
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem('id_token');
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : '',
+    },
+  };
+});
 
 const client = new ApolloClient({
-  uri: 'YOUR_GRAPHQL_ENDPOINT',
-  cache: new InMemoryCache()
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

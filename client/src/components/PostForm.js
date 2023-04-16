@@ -23,7 +23,7 @@ const PostForm = () => {
 
                 cache.writeQuery({
                     query: QUERY_POSTS,
-                    data: { posts: [addPost, ...posts] },
+                    data: { thoughts: [addPost, ...posts] },
                 });
             } catch (e) {
                 console.error(e);
@@ -61,14 +61,15 @@ const PostForm = () => {
         <Card variant="outlined" sx={{
             width: 300,
             minHeight: 100,
+
             margin: 'auto',
-            padding: '0 1rem',
+            padding: '1rem',
             borderRadius: '10px',
             bgcolor: 'primary.main'
 
         }}
         >
-            <h3>Create your masterpiece of a theory here</h3>
+            <h3>Create your master peice of a theory here</h3>
 
 
             <>
@@ -96,14 +97,9 @@ const PostForm = () => {
                     </div>
 
                     <CardActions disableSpacing>
-                        <Button variant="contained" type="submit" sx={{
-                            bgcolor: 'secondary.main',
-                            color: 'black',
-                            m: 2,
-                            '&:hover': {
-                                bgcolor: 'secondary.dark',
-                            }
-                        }}>Add Thought</Button>
+                        <Button variant="outlined" type="submit" sx={{ bgcolor: 'secondary.main', color: 'black', m: 2, }}>
+                            Add Thought
+                        </Button>
                         <p
                             className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
                                 }`}
@@ -123,4 +119,4 @@ const PostForm = () => {
     );
 };
 
-export default PostForm;;
+export default PostForm;

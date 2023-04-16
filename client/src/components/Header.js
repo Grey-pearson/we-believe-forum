@@ -1,9 +1,20 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import Nav from './Nav';
 import { Button, Typography } from '@mui/material';
+import { AUTH_TOKEN } from '../constants';
 
 function Header(props) {
   const { currentTab, handleTabChange } = props;
+
+  // const Header = () => {
+  //   const navigate = useNavigate();
+  //   const authToken = localStorage.getItem(AUTH_TOKEN);
+
+  //   const handleTabChange = (tab) => {
+  //     localStorage.setItem(AUTH_TOKEN, tab);
+  //     navigate(tab);
+  //   };
 
   return (
     <div className="center">
@@ -20,5 +31,6 @@ function Header(props) {
     </div>
   );
 }
+// }
 
 export default Header;
