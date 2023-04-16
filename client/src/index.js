@@ -20,11 +20,21 @@ const theme = createTheme({
       light: colors.indigo[300],
       dark: colors.indigo[800],
     },
-  },
+    secondary: {
+      main: colors.teal[500],
+      dark: colors.teal[800],
+    },
+    highlight: {
+      main: colors.yellow[500]
+    }
+
+  }
 });
 
+const httpLink = new HttpLink({ uri: '/graphql' });// get url
+
 const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem(AUTH_TOKEN);
+  const token = localStorage.getItem('id_token');
   return {
     headers: {
       ...headers,
@@ -32,8 +42,6 @@ const authLink = setContext((_, { headers }) => {
     },
   };
 });
-
-const httpLink = new HttpLink({ uri: 'http://localhost:3001/graphql' });
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),

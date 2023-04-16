@@ -5,6 +5,7 @@ import PostList from '../components/Postlist';
 import PostForm from '../components/PostForm';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../utils/queries';
+import { CircularProgress, Box, } from '@mui/material';
 
 export default function Home() {
   const { loading, data } = useQuery(QUERY_POSTS);
@@ -16,7 +17,7 @@ export default function Home() {
       <PostForm />
       <div >
         {loading ? (
-          <div>Loading...</div>
+          <CircularProgress />
         ) : (
           <PostList
             posts={postData}
