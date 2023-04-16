@@ -23,7 +23,7 @@ const PostForm = () => {
 
                 cache.writeQuery({
                     query: QUERY_POSTS,
-                    data: { thoughts: [addPost, ...posts] },
+                    data: { posts: [addPost, ...posts] },
                 });
             } catch (e) {
                 console.error(e);
@@ -61,9 +61,6 @@ const PostForm = () => {
         <Card variant="outlined" sx={{
             width: 300,
             minHeight: 100,
-            '&:hover': {
-                opacity: [0.9, 0.8, 0.7],
-            },
             margin: 'auto',
             padding: '0 1rem',
             borderRadius: '10px',
@@ -71,7 +68,7 @@ const PostForm = () => {
 
         }}
         >
-            <h3>Create your master peice of a theory here</h3>
+            <h3>Create your masterpiece of a theory here</h3>
 
 
             <>
@@ -91,15 +88,22 @@ const PostForm = () => {
                             sx={{
                                 backgroundColor: 'primary.light',
                                 borderRadius: '10px',
-                                // border: '1px solid',
+                                '&:hover': {
+                                    opacity: [0.9, 0.8, 0.7],
+                                },
                             }}
                         />
                     </div>
 
                     <CardActions disableSpacing>
-                        <Button variant="outlined" type="submit" sx={{ bgcolor: 'secondary.main', color: 'black', m: 2, }}>
-                            Add Thought
-                        </Button>
+                        <Button variant="contained" type="submit" sx={{
+                            bgcolor: 'secondary.main',
+                            color: 'black',
+                            m: 2,
+                            '&:hover': {
+                                bgcolor: 'secondary.dark',
+                            }
+                        }}>Add Thought</Button>
                         <p
                             className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
                                 }`}

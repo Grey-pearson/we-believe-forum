@@ -16,6 +16,7 @@ const theme = createTheme({
     },
     secondary: {
       main: colors.teal[500],
+      dark: colors.teal[800],
     },
     highlight: {
       main: colors.yellow[500]
