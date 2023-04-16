@@ -32,7 +32,7 @@ const theme = createTheme({
   }
 });
 
-const httpLink = new HttpLink({ uri: 'YOUR_GRAPHQL_ENDPOINT' });
+const httpLink = new HttpLink({ uri: '/graphql' });// get url
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
