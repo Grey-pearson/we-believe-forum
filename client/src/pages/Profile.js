@@ -1,9 +1,18 @@
 import React from 'react';
+import Typography from '@mui/material/Typography';
 
 function Profile(props) {
   return (
     <div>
-      <h1>Profile</h1>
+      <Typography
+        variant="h4"
+        component="h2"
+        align="center"
+        color="primary"
+        gutterBottom
+      >
+        Profile
+      </Typography>
     </div>
   );
 }
