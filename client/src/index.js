@@ -8,7 +8,6 @@ import {
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  from,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createTheme, ThemeProvider, colors } from '@mui/material';
@@ -34,7 +33,7 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-const httpLink = new HttpLink({ uri: 'YOUR_GRAPHQL_ENDPOINT' });
+const httpLink = new HttpLink({ uri: 'http://localhost:3001/graphql' });
 
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
