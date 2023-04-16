@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { AUTH_TOKEN } from '../constants';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,6 +18,49 @@ const Login = () => {
     email: '',
     password: '',
     name: '',
+  });
+
+  const SIGNUP_MUTATION = gql`
+    mutation SignupMutation(
+      $email: String!
+      $password: String!
+      $name: String!
+    ) {
+      signup(email: $email, password: $password, name: $name) {
+        token
+      }
+    }
+  `;
+
+  const LOGIN_MUTATION = gql`
+    mutation LoginMutation($email: String!, $password: String!) {
+      login(email: $email, password: $password) {
+        token
+      }
+    }
+  `;
+
+  const [login] = useMutation(LOGIN_MUTATION, {
+    variables: {
+      email: formState.email,
+      password: formState.password,
+    },
+    onCompleted: ({ login }) => {
+      localStorage.setItem(AUTH_TOKEN, login.token);
+      navigate('/');
+    },
+  });
+
+  const [signup] = useMutation(SIGNUP_MUTATION, {
+    variables: {
+      name: formState.name,
+      email: formState.email,
+      password: formState.password,
+    },
+    onCompleted: ({ signup }) => {
+      localStorage.setItem(AUTH_TOKEN, signup.token);
+      navigate('/');
+    },
   });
 
   return (
@@ -90,7 +134,7 @@ const Login = () => {
             <Button
               variant="contained"
               color="primary"
-              onClick={() => console.log('onClick')}
+              onClick={formState.login ? login : signup}
             >
               {formState.login ? 'login' : 'create account'}
             </Button>
