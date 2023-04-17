@@ -54,8 +54,8 @@ const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ addUser }) => {
-      Auth.addUser(addUser.token);
-      console.log(addUser.token);
+      // Auth.addUser(addUser.token);
+      // console.log(addUser.token);
       localStorage.setItem(AUTH_TOKEN, addUser.token);
       localStorage.setItem('user', JSON.stringify(addUser.user));
       navigate('/Home');
