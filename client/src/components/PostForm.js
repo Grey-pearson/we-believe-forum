@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS } from '../utils/queries';
+import { useNavigate } from 'react-router-dom';
 
 import { Card, TextField, Button, Typography } from '@mui/material';
 import { useTheme, colors, CardActions } from '@mui/material';
@@ -13,6 +14,7 @@ import { AUTH_TOKEN } from '../constants';
 
 const PostForm = () => {
   const theme = useTheme();
+  const navigate = useNavigate();
 
   const [postText, setPostText] = useState('');
 
@@ -63,8 +65,12 @@ const PostForm = () => {
 
   const [addPost] = useMutation(ADD_POST, {
     variables: {
-      postText,
+      postText: setPostText.postText,
       postAuthor: user.username,
+    },
+    onCompleted: ({ addPost }) => {
+
+      navigate('/Home');
     },
   });
 
