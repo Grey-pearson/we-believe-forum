@@ -44,7 +44,7 @@ const PostForm = () => {
       const { data } = await addPost({
         variables: {
           postText,
-          postAuthor: AuthService.getProfile().data.username,
+          postAuthor: user.username,
         },
       });
 
