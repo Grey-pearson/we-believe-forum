@@ -8,11 +8,13 @@ import {
   InMemoryCache,
   ApolloProvider,
   HttpLink,
-  from,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { createTheme, ThemeProvider, colors } from '@mui/material';
 import { AUTH_TOKEN } from './constants';
+
+//React needs
+//Client
 
 const theme = createTheme({
   palette: {
@@ -26,13 +28,12 @@ const theme = createTheme({
       dark: colors.teal[800],
     },
     highlight: {
-      main: colors.yellow[500]
-    }
-
-  }
+      main: colors.yellow[500],
+    },
+  },
 });
 
-const httpLink = new HttpLink({ uri: '/graphql' });// get url
+const httpLink = new HttpLink({ uri: '/graphql' }); // get url
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');

@@ -52,11 +52,10 @@ const resolvers = {
 
       return post;
     },
-    
+
     removePost: async (parent, { postId }) => {
       return Post.findOneAndDelete({ _id: postId });
     },
-    
   },
 };
 

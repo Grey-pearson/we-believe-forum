@@ -4,119 +4,127 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS } from '../utils/queries';
 
-import { Card, TextField, Button } from '@mui/material';
+import { Card, TextField, Button, Typography } from '@mui/material';
 import { useTheme, colors, CardActions } from '@mui/material';
+import Box from '@mui/material/Box';
 
 import AuthService from '../utils/auth';
 
 const PostForm = () => {
-    const theme = useTheme();
+  const theme = useTheme();
 
-    const [postText, setPostText] = useState('');
+  const [postText, setPostText] = useState('');
 
-    const [characterCount, setCharacterCount] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
 
-    const [addPost, { error }] = useMutation(ADD_POST, {
-        update(cache, { data: { addPost } }) {
-            try {
-                const { posts } = cache.readQuery({ query: QUERY_POSTS });
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
 
-                cache.writeQuery({
-                    query: QUERY_POSTS,
-                    data: { thoughts: [addPost, ...posts] },
-                });
-            } catch (e) {
-                console.error(e);
-            }
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { thoughts: [addPost, ...posts] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    },
+  });
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addPost({
+        variables: {
+          postText,
+          postAuthor: AuthService.getProfile().data.username,
         },
-    });
+      });
 
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
+      setPostText('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-        try {
-            const { data } = await addPost({
-                variables: {
-                    postText,
-                    postAuthor: AuthService.getProfile().data.username,
-                },
-            });
+  const handleChange = (event) => {
+    const { name, value } = event.target;
 
-            setPostText('');
-        } catch (err) {
-            console.error(err);
-        }
-    };
+    if (name === 'postText' && value.length <= 280) {
+      setPostText(value);
+      setCharacterCount(value.length);
+    }
+  };
 
-    const handleChange = (event) => {
-        const { name, value } = event.target;
+  return (
+    <Card
+      variant="outlined"
+      sx={{
+        width: 300,
+        minHeight: 100,
 
-        if (name === 'postText' && value.length <= 280) {
-            setPostText(value);
-            setCharacterCount(value.length);
-        }
-    };
-
-    return (
-        <Card variant="outlined" sx={{
-            width: 300,
-            minHeight: 100,
-
-            margin: 'auto',
-            padding: '1rem',
-            borderRadius: '10px',
-            bgcolor: 'primary.main'
-
+        margin: 'auto',
+        padding: '1rem',
+        borderRadius: '10px',
+        bgcolor: 'primary.main',
+      }}
+    >
+      <Typography
+        align="center"
+        sx={{
+          fontFamily: 'Metal Mania, cursive',
+          fontSize: '25px',
         }}
-        >
-            <h3>Create your master peice of a theory here</h3>
+      >
+        <h3>Create your masterpiece of a theory here</h3>
+      </Typography>
+      <>
+        <form onSubmit={handleFormSubmit}>
+          <div>
+            <TextField
+              variant="outlined"
+              fullWidth
+              id="outlined-multiline-static"
+              multiline
+              rows={4}
+              focused
+              defaultValue={'text here'}
+              sx={{
+                backgroundColor: 'primary.light',
+                align: 'center',
+                borderRadius: '10px',
+                '&:hover': {
+                  opacity: [0.9, 0.8, 0.7],
+                },
+              }}
+            />
+          </div>
 
-
-            <>
-
-                <form
-                    onSubmit={handleFormSubmit}
-                >
-                    <div>
-                        <TextField
-                            variant="outlined"
-                            fullWidth
-                            id="outlined-multiline-static"
-                            multiline
-                            rows={4}
-                            focused
-                            defaultValue={'text here'}
-                            sx={{
-                                backgroundColor: 'primary.light',
-                                borderRadius: '10px',
-                                '&:hover': {
-                                    opacity: [0.9, 0.8, 0.7],
-                                },
-                            }}
-                        />
-                    </div>
-
-                    <CardActions disableSpacing>
-                        <Button variant="outlined" type="submit" sx={{ bgcolor: 'secondary.main', color: 'black', m: 2, }}>
-                            Add Thought
-                        </Button>
-                        <p
-                            className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
-                                }`}
-                        >
-                            {characterCount}/280
-                        </p>
-                    </CardActions>
-                    {error && (
-                        <div>
-                            {error.message}
-                        </div>
-                    )}
-                </form>
-            </>
-
-        </Card >
-    );
+          <CardActions disableSpacing>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant="outlined"
+                type="submit"
+                sx={{ bgcolor: 'secondary.main', color: 'black', m: 2 }}
+              >
+                Add Thought
+              </Button>
+            </Box>
+            <p
+              className={`m-0 ${
+                characterCount === 280 || error ? 'text-danger' : ''
+              }`}
+            >
+              {characterCount}/280
+            </p>
+          </CardActions>
+          {error && <div>{error.message}</div>}
+        </form>
+      </>
+    </Card>
+  );
 };
 
 export default PostForm;
