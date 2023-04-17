@@ -12,11 +12,11 @@ import AuthService from '../utils/auth';
 import { AUTH_TOKEN } from '../constants'
 
 const PostForm = () => {
-  // const theme = useTheme();
+  const theme = useTheme();
 
-  // const [postText, setPostText] = useState('');
+  const [postText, setPostText] = useState('');
 
-  // const [characterCount, setCharacterCount] = useState(0);
+  const [characterCount, setCharacterCount] = useState(0);
 
   // const [addPost, { error }] = useMutation(ADD_POST, {
   //   update(cache, { data: { addPost } }) {
@@ -57,77 +57,25 @@ const PostForm = () => {
 
   // const postText = '';
 
-  // const user = localStorage.getItem(user.username)
+  const user = localStorage.getItem(user.username)
 
 
-  // const [addPost] = useMutation(ADD_POST, {
-  //   variables: {
-  //     postText,
-  //     postAuthor: 'user',
-  //   },
-  //   onCompleted: ({ addPost }) => {
-
-  //   }
-  // })
-
-
-  // const handleChange = (event) => {
-  //   const { name, value } = event.target
-  //   // console.log(value); // remove fo sho 
-
-  //   if (name === 'postText' && value.length <= 280) {
-  //     setPostText(value);
-  //     setCharacterCount(value.length);
-  //   }
-  // };
-
-
-  const theme = useTheme();
-
-  const [postText, setPostText] = useState('');
-
-  const [characterCount, setCharacterCount] = useState(0);
-
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
-
-        cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
+  const [addPost] = useMutation(ADD_POST, {
+    variables: {
+      postText,
+      postAuthor: 'user',
     },
-  });
+    onCompleted: ({ addPost }) => {
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const authToken = AuthService.getToken();
-    const username = AuthService.getProfile().data.username;
-    console.log(authToken)
-    console.log(username)
-
-    try {
-      const { data } = await addPost({
-        variables: {
-          postText,
-          postAuthor: username,
-        },
-      });
-
-      setPostText('');
-    } catch (err) {
-      console.error(err);
     }
-  };
+  })
+
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
+    // console.log(value); // remove fo sho 
 
-    if (name === 'thoughtText' && value.length <= 280) {
+    if (name === 'postText' && value.length <= 280) {
       setPostText(value);
       setCharacterCount(value.length);
     }
@@ -156,7 +104,7 @@ const PostForm = () => {
         Create your masterpiece of a theory here
       </Typography>
       <>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={addPost}>
           <div>
             <TextField
               name="thoughtText"
