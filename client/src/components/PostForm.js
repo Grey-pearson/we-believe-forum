@@ -65,12 +65,11 @@ const PostForm = () => {
       postText,
       postAuthor: user.username,
     },
-    onCompleted: ({ addPost }) => {},
   });
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // console.log(value); // remove fo sho
+    console.log(value); // remove fo sho
 
     if (name === 'postText' && value.length <= 280) {
       setPostText(value);
@@ -104,7 +103,7 @@ const PostForm = () => {
         <form onSubmit={addPost}>
           <div>
             <TextField
-              name="thoughtText"
+              name="postText"
               variant="outlined"
               fullWidth
               id="outlined-multiline-static"
@@ -138,9 +137,8 @@ const PostForm = () => {
               </Button>
             </Box>
             <p
-              className={`m-0 ${
-                characterCount === 280 || 'error' ? 'text-danger' : ''
-              }`}
+              className={`m-0 ${characterCount === 280 || 'error' ? 'text-danger' : ''
+                }`}
             >
               {characterCount}/280
             </p>
