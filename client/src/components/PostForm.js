@@ -36,6 +36,7 @@ const PostForm = () => {
     event.preventDefault();
 
     try {
+
       const { data } = await addPost({
         variables: {
           postText,
@@ -50,7 +51,8 @@ const PostForm = () => {
   };
 
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target
+    console.log(value); // remove fo sho 
 
     if (name === 'postText' && value.length <= 280) {
       setPostText(value);
@@ -78,19 +80,23 @@ const PostForm = () => {
           fontSize: '25px',
         }}
       >
-        <h3>Create your masterpiece of a theory here</h3>
+        Create your masterpiece of a theory here
       </Typography>
       <>
         <form onSubmit={handleFormSubmit}>
           <div>
             <TextField
+              name="thoughtText"
               variant="outlined"
               fullWidth
               id="outlined-multiline-static"
               multiline
               rows={4}
               focused
-              defaultValue={'text here'}
+              itemID='textField'
+              onChange={handleChange}
+              // value={TextFieldValue}
+              placeholder={'text here'}
               sx={{
                 backgroundColor: 'primary.light',
                 align: 'center',
@@ -99,7 +105,7 @@ const PostForm = () => {
                   opacity: [0.9, 0.8, 0.7],
                 },
               }}
-            />
+            ></TextField>
           </div>
 
           <CardActions disableSpacing>
@@ -109,13 +115,12 @@ const PostForm = () => {
                 type="submit"
                 sx={{ bgcolor: 'secondary.main', color: 'black', m: 2 }}
               >
-                Add Thought
+                Create Post
               </Button>
             </Box>
             <p
-              className={`m-0 ${
-                characterCount === 280 || error ? 'text-danger' : ''
-              }`}
+              className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
+                }`}
             >
               {characterCount}/280
             </p>
@@ -123,7 +128,7 @@ const PostForm = () => {
           {error && <div>{error.message}</div>}
         </form>
       </>
-    </Card>
+    </Card >
   );
 };
 

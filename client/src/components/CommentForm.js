@@ -17,7 +17,6 @@ const CommentForm = (postId) => {
     const [characterCount, setCharacterCount] = useState(0);
 
 
-    //fix
     const [addComment, { error }] = useMutation(ADD_COMMENT, {
         update(cache, { data: { addPost } }) {
             try {
@@ -53,6 +52,7 @@ const CommentForm = (postId) => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+        console.log(value)
 
         if (name === 'commentText' && value.length <= 280) {
             setCommentText(value);
@@ -63,12 +63,7 @@ const CommentForm = (postId) => {
     return (
         <div>
             <br />
-
-
-
-            <form
-            // onSubmit={handleFormSubmit}
-            >
+            <form onSubmit={handleFormSubmit}>
                 <div>
                     <TextField
                         variant="outlined"
@@ -77,7 +72,9 @@ const CommentForm = (postId) => {
                         multiline
                         rows={4}
                         focused
-                        defaultValue={'text here'}
+                        name="commentText"
+                        onChange={handleChange}
+                        placeholder={'text here'}
                         sx={{
                             backgroundColor: 'primary.light',
                             borderRadius: '10px',
