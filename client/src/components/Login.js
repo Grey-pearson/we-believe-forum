@@ -76,7 +76,7 @@ const Login = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box textAlign="center" py={3} onClick={formState.login ? login : signup}>
+      <Box textAlign="center" py={3}>
         <Typography
           variant="h4"
           color="secondary"
