@@ -33,7 +33,9 @@ const theme = createTheme({
   },
 });
 
-const httpLink = new HttpLink({ uri: '/graphql' }); // get url
+const httpLink = new HttpLink({
+  uri: 'https://we-believe.up.railway.app/graphql',
+});
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
