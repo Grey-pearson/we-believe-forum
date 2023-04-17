@@ -26,7 +26,7 @@ const Login = () => {
       $password: String!
       $name: String!
     ) {
-      signup(email: $email, password: $password, name: $name) {
+      addUser(username: $name, email: $email, password: $password) {
         token
       }
     }
@@ -47,7 +47,7 @@ const Login = () => {
     },
     onCompleted: ({ login }) => {
       localStorage.setItem(AUTH_TOKEN, login.token);
-      navigate('/');
+      navigate('/Home');
     },
   });
 
@@ -57,9 +57,9 @@ const Login = () => {
       email: formState.email,
       password: formState.password,
     },
-    onCompleted: ({ signup }) => {
-      localStorage.setItem(AUTH_TOKEN, signup.token);
-      navigate('/');
+    onCompleted: ({ addUser }) => {
+      localStorage.setItem(AUTH_TOKEN, addUser.token);
+      navigate('/Home');
     },
   });
 

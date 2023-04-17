@@ -2,9 +2,11 @@
   "name": "we-believe-forum",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://we-believe-forum-production.up.railway.app/",
+  "proxy-production": "https://we-believe-forum-production.up.railway.app/",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@apollo/client": "^3.7.12",
+    "@apollo/react-hooks": "^4.0.0",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.16",
