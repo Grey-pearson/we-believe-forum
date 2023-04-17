@@ -57,13 +57,13 @@ const PostForm = () => {
 
   // const postText = '';
 
-  console.log(localStorage.getItem(AUTH_TOKEN))
+  const user = localStorage.getItem(user.username)
 
 
   const [addPost] = useMutation(ADD_POST, {
     variables: {
       postText,
-      // postAuthor: AuthService.getProfile().data.username,
+      postAuthor: 'user',
     },
     onCompleted: ({ addPost }) => {
 
@@ -73,7 +73,7 @@ const PostForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    console.log(value); // remove fo sho 
+    // console.log(value); // remove fo sho 
 
     if (name === 'postText' && value.length <= 280) {
       setPostText(value);
