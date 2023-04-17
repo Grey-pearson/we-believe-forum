@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { AUTH_TOKEN } from '../constants';
-import Auth from '../utils/auth';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -54,8 +53,6 @@ const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ addUser }) => {
-      Auth.login(addUser.addUser.token);
-      console.log(addUser.addUser.token);
       localStorage.setItem(AUTH_TOKEN, addUser.token);
       localStorage.setItem('user', JSON.stringify(addUser.user));
       navigate('/Home');
@@ -68,8 +65,6 @@ const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ login }) => {
-      Auth.login(login.addUser.token);
-      console.log(login.addUser.token);
       localStorage.setItem(AUTH_TOKEN, login.token);
       localStorage.setItem('user', JSON.stringify(login.user));
       navigate('/Home');
