@@ -15,16 +15,16 @@ const Login = () => {
     login: true,
     email: '',
     password: '',
-    name: '',
+    username: '',
   });
 
   const SIGNUP_MUTATION = gql`
     mutation SignupMutation(
       $email: String!
       $password: String!
-      $name: String!
+      $username: String!
     ) {
-      addUser(username: $name, email: $email, password: $password) {
+      addUser(username: $username, email: $email, password: $password) {
         token
         user {
           username
@@ -60,7 +60,7 @@ const Login = () => {
 
   const [signup] = useMutation(SIGNUP_MUTATION, {
     variables: {
-      username: formState.name,
+      username: formState.username,
       email: formState.email,
       password: formState.password,
     },
@@ -88,11 +88,11 @@ const Login = () => {
           {!formState.login && (
             <Grid item>
               <TextField
-                value={formState.name}
+                value={formState.username}
                 onChange={(e) =>
                   setFormState({
                     ...formState,
-                    name: e.target.value,
+                    username: e.target.value,
                   })
                 }
                 type="text"
