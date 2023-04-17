@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import styles from './Login.module.css';
 import { gql, useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -62,21 +60,27 @@ const Login = () => {
 
   const [signup] = useMutation(SIGNUP_MUTATION, {
     variables: {
-      name: formState.name,
+      username: formState.username,
       email: formState.email,
       password: formState.password,
     },
     onCompleted: ({ addUser }) => {
-      localStorage.setItem(AUTH_TOKEN, addUser.token);
-      localStorage.setItem('user', JSON.stringify(addUser.user));
+      localStorage.setItem(AUTH_TOKEN, signup.token);
+      localStorage.setItem('user', JSON.stringify(signup.user));
       navigate('/Home');
     },
   });
 
   return (
     <Container maxWidth="sm">
-      <Box textAlign="center" py={3}>
-        <Typography variant="h4" color="primary">
+      <Box textAlign="center" py={3} onClick={formState.login ? login : signup}>
+        <Typography
+          variant="h4"
+          color="secondary"
+          sx={{
+            fontFamily: 'Metal Mania, cursive',
+          }}
+        >
           {formState.login ? 'Login' : 'Sign Up'}
         </Typography>
         <br />
@@ -92,7 +96,7 @@ const Login = () => {
                   })
                 }
                 type="text"
-                placeholder="Your name"
+                placeholder=" Type your name"
                 inputProps={{
                   style: { color: 'white' },
                 }}
@@ -131,7 +135,7 @@ const Login = () => {
                 })
               }
               type="password"
-              placeholder="Choose a password"
+              placeholder="Type your password"
               inputProps={{
                 style: { color: 'white' },
               }}
@@ -143,7 +147,10 @@ const Login = () => {
           <Grid item>
             <Button
               variant="contained"
-              color="primary"
+              color="secondary"
+              sx={{
+                fontFamily: 'Metal Mania, cursive',
+              }}
               onClick={formState.login ? login : signup}
             >
               {formState.login ? 'login' : 'create account'}

@@ -10,7 +10,7 @@ function Profile(props) {
         variant="h4"
         component="h2"
         align="center"
-        color="green"
+        color="secondary.main"
         gutterBottom
         sx={{
           fontFamily: 'Metal Mania, cursive',
