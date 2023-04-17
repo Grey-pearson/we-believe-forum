@@ -9,7 +9,7 @@ import AuthService from '../utils/auth';
 
 
 
-const CommentForm = (post_id) => {
+const CommentForm = (postId) => {
     const theme = useTheme(); // need???
 
     const [commentText, setCommentText] = useState('');
@@ -17,7 +17,6 @@ const CommentForm = (post_id) => {
     const [characterCount, setCharacterCount] = useState(0);
 
 
-    //fix
     const [addComment, { error }] = useMutation(ADD_COMMENT, {
         update(cache, { data: { addPost } }) {
             try {
@@ -39,7 +38,7 @@ const CommentForm = (post_id) => {
         try {
             const { data } = await addComment({
                 variables: { // add comment updated variables
-                    postId: post_id,
+                    postId,
                     commentText,
                     commentAuthor: AuthService.getProfile().data.username,
                 },
@@ -53,6 +52,7 @@ const CommentForm = (post_id) => {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
+        console.log(value)
 
         if (name === 'commentText' && value.length <= 280) {
             setCommentText(value);
@@ -63,12 +63,7 @@ const CommentForm = (post_id) => {
     return (
         <div>
             <br />
-
-
-
-            <form
-            // onSubmit={handleFormSubmit}
-            >
+            <form onSubmit={handleFormSubmit}>
                 <div>
                     <TextField
                         variant="outlined"
@@ -77,7 +72,9 @@ const CommentForm = (post_id) => {
                         multiline
                         rows={4}
                         focused
-                        defaultValue={'text here'}
+                        name="commentText"
+                        onChange={handleChange}
+                        placeholder={'text here'}
                         sx={{
                             backgroundColor: 'primary.light',
                             borderRadius: '10px',

@@ -22,7 +22,16 @@ function Nav(props) {
   };
 
   return (
-    <nav className="nav-container">
+    <nav sx={{
+      width: 300,
+      minHeight: 100,
+
+      margin: 'auto',
+      padding: '1rem',
+      borderRadius: '10px',
+      bgcolor: 'primary.main'
+
+    }}>
       <Typography
         variant="h1"
         component="h2"
