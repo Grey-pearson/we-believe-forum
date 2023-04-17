@@ -7,7 +7,16 @@ function Nav(props) {
   const { currentTab, setCurrentTab } = props;
 
   return (
-    <nav className="nav-container">
+    <nav sx={{
+      width: 300,
+      minHeight: 100,
+
+      margin: 'auto',
+      padding: '1rem',
+      borderRadius: '10px',
+      bgcolor: 'primary.main'
+
+    }}>
       <Typography
         variant="h4"
         component="h2"

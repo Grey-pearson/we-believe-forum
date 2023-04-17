@@ -9,7 +9,7 @@ import AuthService from '../utils/auth';
 
 
 
-const CommentForm = (post_id) => {
+const CommentForm = (postId) => {
     const theme = useTheme(); // need???
 
     const [commentText, setCommentText] = useState('');
@@ -39,7 +39,7 @@ const CommentForm = (post_id) => {
         try {
             const { data } = await addComment({
                 variables: { // add comment updated variables
-                    postId: post_id,
+                    postId,
                     commentText,
                     commentAuthor: AuthService.getProfile().data.username,
                 },
