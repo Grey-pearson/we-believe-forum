@@ -57,7 +57,8 @@ const PostForm = () => {
 
   // const postText = '';
 
-  const user = localStorage.getItem(user)
+  const user = JSON.parse(localStorage.getItem('user'));
+  console.log(localStorage.getItem('user'));
   console.log(user);
 
   const [addPost] = useMutation(ADD_POST, {
@@ -103,7 +104,7 @@ const PostForm = () => {
         <form onSubmit={addPost}>
           <div>
             <TextField
-              name="postText"
+              name="post"
               variant="outlined"
               fullWidth
               id="outlined-multiline-static"
