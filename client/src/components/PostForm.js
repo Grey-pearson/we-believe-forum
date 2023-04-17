@@ -9,7 +9,7 @@ import { useTheme, colors, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 
 import AuthService from '../utils/auth';
-import { AUTH_TOKEN } from '../constants'
+import { AUTH_TOKEN } from '../constants';
 
 const PostForm = () => {
   const theme = useTheme();
@@ -57,21 +57,19 @@ const PostForm = () => {
 
   // const postText = '';
 
-  // const user = localStorage.getItem(user)
-  // console.log(user)
-
+  const user = JSON.parse(localStorage.getItem(user));
+  console.log(user);
 
   const [addPost] = useMutation(ADD_POST, {
     variables: {
       postText,
-      postAuthor: 'user',
-    }
-  })
-
+      postAuthor: user.username,
+    },
+  });
 
   const handleChange = (event) => {
-    const { name, value } = event.target
-    console.log(value); // remove fo sho 
+    const { name, value } = event.target;
+    console.log(value); // remove fo sho
 
     if (name === 'postText' && value.length <= 280) {
       setPostText(value);
@@ -105,14 +103,14 @@ const PostForm = () => {
         <form onSubmit={addPost}>
           <div>
             <TextField
-              name="thoughtText"
+              name="postText"
               variant="outlined"
               fullWidth
               id="outlined-multiline-static"
               multiline
               rows={4}
               focused
-              itemID='textField'
+              itemID="textField"
               onChange={handleChange}
               // value={TextFieldValue}
               placeholder={'text here'}
@@ -148,7 +146,7 @@ const PostForm = () => {
           {/* {error && <div>{error.message}</div>} */}
         </form>
       </>
-    </Card >
+    </Card>
   );
 };
 

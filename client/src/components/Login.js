@@ -55,7 +55,7 @@ const Login = () => {
     },
     onCompleted: ({ addUser }) => {
       Auth.addUser(addUser.token);
-      console.log(addUser.token);
+      // console.log(addUser.token);
       localStorage.setItem(AUTH_TOKEN, addUser.token);
       localStorage.setItem('user', JSON.stringify(addUser.user));
       navigate('/Home');
@@ -76,7 +76,7 @@ const Login = () => {
 
   return (
     <Container maxWidth="sm">
-      <Box textAlign="center" py={3} onClick={formState.login ? login : signup}>
+      <Box textAlign="center" py={3}>
         <Typography
           variant="h4"
           color="secondary"
