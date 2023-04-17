@@ -46,18 +46,6 @@ const Login = () => {
     }
   `;
 
-  const [login] = useMutation(LOGIN_MUTATION, {
-    variables: {
-      email: formState.email,
-      password: formState.password,
-    },
-    onCompleted: ({ login }) => {
-      localStorage.setItem(AUTH_TOKEN, login.token);
-      localStorage.setItem('user', JSON.stringify(login.user));
-      navigate('/Home');
-    },
-  });
-
   const [signup] = useMutation(SIGNUP_MUTATION, {
     variables: {
       username: formState.name,
@@ -67,6 +55,18 @@ const Login = () => {
     onCompleted: ({ addUser }) => {
       localStorage.setItem(AUTH_TOKEN, addUser.token);
       localStorage.setItem('user', JSON.stringify(addUser.user));
+      navigate('/Home');
+    },
+  });
+
+  const [login] = useMutation(LOGIN_MUTATION, {
+    variables: {
+      email: formState.email,
+      password: formState.password,
+    },
+    onCompleted: ({ login }) => {
+      localStorage.setItem(AUTH_TOKEN, login.token);
+      localStorage.setItem('user', JSON.stringify(login.user));
       navigate('/Home');
     },
   });
