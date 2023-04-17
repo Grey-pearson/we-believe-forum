@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Post from './components/Post';
 import Login from './components/Login';
-import Signup from './components/Signup';
 import User from './components/User';
 import Header from './components/Header';
 import Profile from './pages/Profile';
