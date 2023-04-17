@@ -1,10 +1,18 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Box, Button, Stack, Typography } from '@mui/material';
-import { styled } from '@mui/system';
 
 function Nav(props) {
   const { currentTab, setCurrentTab } = props;
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleSignOut = () => {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+
+    navigate('/Login');
+  };
 
   return (
     <nav className="nav-container">
@@ -54,7 +62,11 @@ function Nav(props) {
               </Button>
             </li>
             <li>
-              <Button variant="outlined" color="primary">
+              <Button
+                onClick={handleSignOut}
+                variant="outlined"
+                color="primary"
+              >
                 SIGN OUT
               </Button>
             </li>
