@@ -26,8 +26,12 @@ const Login = () => {
       $password: String!
       $name: String!
     ) {
-      signup(email: $email, password: $password, name: $name) {
+      addUser(username: $name, email: $email, password: $password) {
         token
+        user {
+          username
+          email
+        }
       }
     }
   `;
@@ -36,6 +40,10 @@ const Login = () => {
     mutation LoginMutation($email: String!, $password: String!) {
       login(email: $email, password: $password) {
         token
+        user {
+          username
+          email
+        }
       }
     }
   `;
@@ -47,7 +55,8 @@ const Login = () => {
     },
     onCompleted: ({ login }) => {
       localStorage.setItem(AUTH_TOKEN, login.token);
-      navigate('/');
+      localStorage.setItem('user', JSON.stringify(login.user));
+      navigate('/Home');
     },
   });
 
@@ -57,9 +66,10 @@ const Login = () => {
       email: formState.email,
       password: formState.password,
     },
-    onCompleted: ({ signup }) => {
-      localStorage.setItem(AUTH_TOKEN, signup.token);
-      navigate('/');
+    onCompleted: ({ addUser }) => {
+      localStorage.setItem(AUTH_TOKEN, addUser.token);
+      localStorage.setItem('user', JSON.stringify(addUser.user));
+      navigate('/Home');
     },
   });
 

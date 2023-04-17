@@ -4,8 +4,9 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS } from '../utils/queries';
 
-import { Card, TextField, Button } from '@mui/material';
+import { Card, TextField, Button, Typography } from '@mui/material';
 import { useTheme, colors, CardActions } from '@mui/material';
+import Box from '@mui/material/Box';
 
 import AuthService from '../utils/auth';
 
@@ -70,8 +71,15 @@ const PostForm = () => {
         bgcolor: 'primary.main',
       }}
     >
-      <h3>Create your masterpiece of a theory here</h3>
-
+      <Typography
+        align="center"
+        sx={{
+          fontFamily: 'Metal Mania, cursive',
+          fontSize: '25px',
+        }}
+      >
+        <h3>Create your masterpiece of a theory here</h3>
+      </Typography>
       <>
         <form onSubmit={handleFormSubmit}>
           <div>
@@ -85,6 +93,7 @@ const PostForm = () => {
               defaultValue={'text here'}
               sx={{
                 backgroundColor: 'primary.light',
+                align: 'center',
                 borderRadius: '10px',
                 '&:hover': {
                   opacity: [0.9, 0.8, 0.7],
@@ -94,13 +103,15 @@ const PostForm = () => {
           </div>
 
           <CardActions disableSpacing>
-            <Button
-              variant="outlined"
-              type="submit"
-              sx={{ bgcolor: 'secondary.main', color: 'black', m: 2 }}
-            >
-              Add Thought
-            </Button>
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+              <Button
+                variant="outlined"
+                type="submit"
+                sx={{ bgcolor: 'secondary.main', color: 'black', m: 2 }}
+              >
+                Add Thought
+              </Button>
+            </Box>
             <p
               className={`m-0 ${
                 characterCount === 280 || error ? 'text-danger' : ''
