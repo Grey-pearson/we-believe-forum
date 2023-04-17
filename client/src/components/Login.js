@@ -54,8 +54,8 @@ const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ addUser }) => {
-      Auth.login(addUser.addUser.token);
-      console.log(addUser.addUser.token);
+      Auth.addUser(addUser.token);
+      console.log(addUser.token);
       localStorage.setItem(AUTH_TOKEN, addUser.token);
       localStorage.setItem('user', JSON.stringify(addUser.user));
       navigate('/Home');
@@ -93,15 +93,15 @@ const Login = () => {
           {!formState.login && (
             <Grid item>
               <TextField
-                value={formState.name}
+                value={formState.username}
                 onChange={(e) =>
                   setFormState({
                     ...formState,
-                    name: e.target.value,
+                    username: e.target.value,
                   })
                 }
                 type="text"
-                placeholder=" Type your name"
+                placeholder=" Type your username"
                 inputProps={{
                   style: { color: 'white' },
                 }}
