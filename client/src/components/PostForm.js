@@ -34,6 +34,7 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(AuthService.getProfile().data.username)
 
     try {
 
