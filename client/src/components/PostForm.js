@@ -9,6 +9,7 @@ import { useTheme, colors, CardActions } from '@mui/material';
 import Box from '@mui/material/Box';
 
 import AuthService from '../utils/auth';
+import { AUTH_TOKEN } from '../constants'
 
 const PostForm = () => {
   const theme = useTheme();
@@ -17,52 +18,57 @@ const PostForm = () => {
 
   const [characterCount, setCharacterCount] = useState(0);
 
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+  // const [addPost, { error }] = useMutation(ADD_POST, {
+  //   update(cache, { data: { addPost } }) {
+  //     try {
+  //       const { posts } = cache.readQuery({ query: QUERY_POSTS });
 
-        cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] },
-        });
-      } catch (e) {
-        console.error(e);
-      }
-    },
-  });
+  //       cache.writeQuery({
+  //         query: QUERY_POSTS,
+  //         data: { posts: [addPost, ...posts] },
+  //       });
+  //     } catch (e) {
+  //       console.error(e);
+  //     }
+  //   },
+  // });
 
-  const user = localStorage.getItem('user')
-  console.log(user)
+  // const user = localStorage.getItem('user')
+  // console.log(user)
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    console.log(AuthService.getProfile().data.username)
+  // const handleFormSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log(AuthService.getProfile().data.username)
 
-    try {
+  //   try {
 
-      const { data } = await addPost({
-        variables: {
-          postText,
-          postAuthor: user.username,
-        },
-      });
+  //     const { data } = await addPost({
+  //       variables: {
+  //         postText,
+  //         postAuthor: user.username,
+  //       },
+  //     });
 
-      setPostText('');
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     setPostText('');
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   // const postText = '';
 
+  console.log(localStorage.getItem(AUTH_TOKEN))
 
-  // const [addPost] = useMutation(ADD_POST, {
-  //   variables: {
-  //     postText,
-  //     postAuthor: AuthService.getProfile().data.username,
-  //   }
-  // }
+
+  const [addPost] = useMutation(ADD_POST, {
+    variables: {
+      postText,
+      // postAuthor: AuthService.getProfile().data.username,
+    },
+    onCompleted: ({ addPost }) => {
+
+    }
+  })
 
 
   const handleChange = (event) => {
@@ -98,7 +104,7 @@ const PostForm = () => {
         Create your masterpiece of a theory here
       </Typography>
       <>
-        <form onSubmit={handleFormSubmit}>
+        <form onSubmit={addPost}>
           <div>
             <TextField
               name="thoughtText"
@@ -127,7 +133,7 @@ const PostForm = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button
                 variant="outlined"
-                onClick={console.log(localStorage.getItem('user'))}
+                // onClick={addPost}
                 type="submit"
                 sx={{ bgcolor: 'secondary.main', color: 'black', m: 2 }}
               >
@@ -135,13 +141,13 @@ const PostForm = () => {
               </Button>
             </Box>
             <p
-              className={`m-0 ${characterCount === 280 || error ? 'text-danger' : ''
+              className={`m-0 ${characterCount === 280 || 'error' ? 'text-danger' : ''
                 }`}
             >
               {characterCount}/280
             </p>
           </CardActions>
-          {error && <div>{error.message}</div>}
+          {/* {error && <div>{error.message}</div>} */}
         </form>
       </>
     </Card >
