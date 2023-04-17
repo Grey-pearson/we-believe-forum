@@ -58,8 +58,8 @@ const PostForm = () => {
   // const postText = '';
 
   const user = JSON.parse(localStorage.getItem('user'));
-  console.log(localStorage.getItem('user'));
-  console.log(user);
+  // console.log(localStorage.getItem('user'));
+  // console.log(user);
 
   const [addPost] = useMutation(ADD_POST, {
     variables: {
@@ -70,12 +70,9 @@ const PostForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(value); // remove fo sho
-
-    if (name === 'postText' && value.length <= 280) {
-      setPostText(value);
-      setCharacterCount(value.length);
-    }
+    setPostText(value);
+    console.log(postText);
+    setCharacterCount(value.length);
   };
 
   return (
