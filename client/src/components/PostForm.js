@@ -57,7 +57,7 @@ const PostForm = () => {
 
   // const postText = '';
 
-  const user = localStorage.getItem(user.username)
+  const user = localStorage.getItem(user[0])
 
 
   const [addPost] = useMutation(ADD_POST, {
