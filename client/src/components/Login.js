@@ -8,6 +8,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { AUTH_TOKEN } from '../constants';
+import Auth from '../utils/auth';
 
 const Login = () => {
   const navigate = useNavigate();
