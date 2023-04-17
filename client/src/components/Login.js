@@ -54,8 +54,8 @@ const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ addUser }) => {
-      Auth.login(addUser.addUser.token);
-      console.log(addUser.addUser.token);
+      // Auth.login(addUser.addUser.token);
+      // console.log(addUser.addUser.token);
       localStorage.setItem(AUTH_TOKEN, addUser.token);
       localStorage.setItem('user', JSON.stringify(addUser.user));
       navigate('/Home');
@@ -68,8 +68,8 @@ const Login = () => {
       password: formState.password,
     },
     onCompleted: ({ login }) => {
-      Auth.login(login.addUser.token);
-      console.log(login.addUser.token);
+      // Auth.login(login.addUser.token);
+      // console.log(login.addUser.token);
       localStorage.setItem(AUTH_TOKEN, login.token);
       localStorage.setItem('user', JSON.stringify(login.user));
       navigate('/Home');

@@ -105,7 +105,10 @@ const PostForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    const authToken = AuthService.getToken();
     const username = AuthService.getProfile().data.username;
+    console.log(authToken)
+    console.log(username)
 
     try {
       const { data } = await addPost({
