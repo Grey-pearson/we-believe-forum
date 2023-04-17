@@ -57,24 +57,21 @@ const PostForm = () => {
 
   // const postText = '';
 
-  const user = localStorage.getItem(user)
-  console.log(user)
+  // const user = localStorage.getItem(user)
+  // console.log(user)
 
 
   const [addPost] = useMutation(ADD_POST, {
     variables: {
       postText,
       postAuthor: 'user',
-    },
-    onCompleted: ({ addPost }) => {
-
     }
   })
 
 
   const handleChange = (event) => {
     const { name, value } = event.target
-    // console.log(value); // remove fo sho 
+    console.log(value); // remove fo sho 
 
     if (name === 'postText' && value.length <= 280) {
       setPostText(value);
