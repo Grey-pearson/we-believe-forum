@@ -60,7 +60,7 @@ const Login = () => {
 
   const [signup] = useMutation(SIGNUP_MUTATION, {
     variables: {
-      username: formState.username,
+      username: formState.name,
       email: formState.email,
       password: formState.password,
     },
