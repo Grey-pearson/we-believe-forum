@@ -105,10 +105,10 @@ After installation:
 
 1. Navigate to the 'Login' to either Log in or Register
 2. Register with your username, e-mail, and password
-3. Create a post by clicking the "Create Post" button
-4. Type in the Title and Content of the post and click 'Submit'
-5. The post will appear in the Dashboard page, and should only show your own posts.
-6. If you navigate back to 'Home', every post by all users will be displayed.
+3. Create a post by typing in your theory in the text box and click the "Add Thought" button
+4. The post will appear in the Home Page
+5. If you visit the 'Profile' page, you will see your username and email address.
+6. Click 'Sign Out' to log out of your session.
 
 <br>
 
@@ -156,7 +156,7 @@ Hans: [Github](https://github.com/cameragrammar) or [Email](mailto:hshen801@gmai
 <br>
 Grey: [Github](https://github.com/Grey-pearson) or [Email](mailto:greytpearson@gmail.com)
 <br>
-Leo: [Github](https://github.com/hashketchum208) or [Email](mailto:leo@gmail.com)
+Leo: [Github](https://github.com/hashketchum208) or [Email](mailto:stockton801@gmail.com)
 <br>
 Nick: [Github](https://github.com/nrmoser50) or [Email](mailto:nick@gmail.com)
 <br>

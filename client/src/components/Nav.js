@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Box, Button, Stack, Typography } from '@mui/material';
+import { useApolloClient } from '@apollo/client';
 
 function Nav(props) {
   const { currentTab, setCurrentTab } = props;
   const navigate = useNavigate();
   const location = useLocation();
+  const apolloClient = useApolloClient();
 
-  const handleSignOut = () => {
+  const handleSignOut = async () => {
     localStorage.removeItem('token');
     sessionStorage.removeItem('token');
-
+    //Remove token from Apollo client
+    try {
+      await apolloClient.resetStore();
+    } catch (err) {
+      console.log('Error resetting Apollo store', err);
+    }
     navigate('/Login');
   };
 
