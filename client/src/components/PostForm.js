@@ -57,6 +57,7 @@ const PostForm = () => {
 
   // const postText = '';
 
+
   // const user = localStorage.getItem(user.username)
 
 
@@ -122,7 +123,9 @@ const PostForm = () => {
   };
 
   const handleChange = (event) => {
+
     const { name, value } = event.target;
+
 
     if (name === 'thoughtText' && value.length <= 280) {
       setPostText(value);
