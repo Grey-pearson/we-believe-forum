@@ -24,13 +24,16 @@ const PostForm = () => {
 
         cache.writeQuery({
           query: QUERY_POSTS,
-          data: { thoughts: [addPost, ...posts] },
+          data: { posts: [addPost, ...posts] },
         });
       } catch (e) {
         console.error(e);
       }
     },
   });
+
+  const user = localStorage.getItem('user')
+  console.log(user)
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -50,6 +53,17 @@ const PostForm = () => {
       console.error(err);
     }
   };
+
+  // const postText = '';
+
+
+  // const [addPost] = useMutation(ADD_POST, {
+  //   variables: {
+  //     postText,
+  //     postAuthor: AuthService.getProfile().data.username,
+  //   }
+  // }
+
 
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -113,6 +127,7 @@ const PostForm = () => {
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
               <Button
                 variant="outlined"
+                onClick={console.log(localStorage.getItem('user'))}
                 type="submit"
                 sx={{ bgcolor: 'secondary.main', color: 'black', m: 2 }}
               >

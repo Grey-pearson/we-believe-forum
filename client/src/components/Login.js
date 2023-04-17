@@ -88,11 +88,11 @@ const Login = () => {
           {!formState.login && (
             <Grid item>
               <TextField
-                value={formState.username}
+                value={formState.name}
                 onChange={(e) =>
                   setFormState({
                     ...formState,
-                    username: e.target.value,
+                    name: e.target.value,
                   })
                 }
                 type="text"
