@@ -2,7 +2,7 @@
 
 A forum for a loving community of weirdos
 
-![Badge](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
+![Badge](https://img.shields.io/badge/license-MIT-blue)
 
 ## Table of Contents
 
@@ -23,21 +23,27 @@ A forum for a loving community of weirdos
 
 ---
 
-[APACHE License](./LICENSE) <br>
+[MIT License](./LICENSE) <br>
 
-Copyright [2023] [Hans Shen]
+Copyright (c) 2022 Hans Shen
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-    http://www.apache.org/licenses/LICENSE-2.0
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 <br>
 
 <br>
@@ -158,6 +164,6 @@ Grey: [Github](https://github.com/Grey-pearson) or [Email](mailto:greytpearson@g
 <br>
 Leo: [Github](https://github.com/hashketchum208) or [Email](mailto:stockton801@gmail.com)
 <br>
-Nick: [Github](https://github.com/nrmoser50) or [Email](mailto:nick@gmail.com)
+Nick: [Github](https://github.com/nrmoser50) or [Email](mailto:nicholas.r.moser@gmail.com)
 <br>
-Cameron: [Github](https://github.com/) or [Email](mailto:cam@gmail.com)
+Cameron: [Github](https://github.com/cammmmmm1) or [Email](cameronsmithrm1216@gmail.com)
